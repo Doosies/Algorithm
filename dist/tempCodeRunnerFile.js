@@ -1,5 +1,8 @@
 "use strict";
-// const ru = compress(row, col + size, size);
-// const ld = compress(row + size, col, size);
-// const rd = compress(row + size, col + size, size);
+//     a: 1,
+//     b: 2,
+//     c: 3,
+// }
+// const b = typeof aaa;
+// console.log(Object.keys(Color));
 //# sourceMappingURL=tempCodeRunnerFile.js.map
