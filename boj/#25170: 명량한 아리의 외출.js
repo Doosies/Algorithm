@@ -51,7 +51,9 @@ for (let i = 0; i < 2; i++) {
     }
   }
 }
+
 dp[0][0][0] = 0;
+
 for (let y = 0; y < N; y++) {
   for (let x = 0; x < M; x++) {
     // 첫칸은 거름
@@ -67,15 +69,16 @@ for (let y = 0; y < N; y++) {
           const [beforeWork, beforeTime] = board[py][px];
           const calcTime = t - 1 - beforeTime;
 
-          // 일은 한경우
           dp[y][x][t] = Math.max(
+            // 현재 dp
             dp[y][x][t],
+            // 일을 안할경우
+            beforeDp[t - 1],
+            // 일은 한경우
             calcTime >= 0 && beforeDp[calcTime] !== -1
               ? beforeDp[calcTime] + beforeWork
               : -1
           );
-          // 일을 안할경우
-          dp[y][x][t] = Math.max(dp[y][x][t], beforeDp[t - 1]);
         }
       }); // 왼쪽, 대각선, 위방향 탐색 forEach 종료
     } // T 탐색 종료
