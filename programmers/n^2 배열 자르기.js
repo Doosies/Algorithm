@@ -22,12 +22,11 @@
 //   }
 //   return result;
 // }
-
 function solution(n, left, right) {
   const result = [];
 
-  for (let i = left; i <= right; i++) {
-    const quotient = Math.floor(i / n) + 1;
+  for (let i = left + 1; i <= right + 1; i++) {
+    const quotient = Math.ceil(i / n);
     const remainder = i % n || n;
     result.push(remainder <= quotient ? quotient : remainder);
   }
