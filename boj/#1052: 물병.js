@@ -2,7 +2,7 @@ const fs = require('fs');
 const stdin = (
   process.platform === 'linux'
     ? fs.readFileSync(0, 'utf-8')
-    : `1000000 5
+    : `13 2
 `
 )
   .trim()
