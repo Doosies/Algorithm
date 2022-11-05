@@ -1,5 +1,4 @@
-const fs = require('fs');
-const stdin = (process.platform === 'linux' ? fs.readFileSync(0, 'utf-8') : `128 138`).trim().split('\n');
+const stdin = (process.platform === 'linux' ? require('fs').readFileSync(0, 'utf-8') : `128 138`).trim().split('\n');
 const input = (() => {
   let line = 0;
   return () => stdin[line++].split(' ').map(v => v);
