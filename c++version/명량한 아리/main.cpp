@@ -10,6 +10,8 @@ using namespace std;
 int main() {
   freopen("input.txt", "r", stdin);
   
+  cout<<"hi";
+  
   return 0;
 }
 
