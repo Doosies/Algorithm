@@ -1,7 +1,6 @@
 #include <algorithm>
 #include <iostream>
 #include <numeric>
-#include <string>
 #include <vector>
 using namespace std;
 
@@ -23,17 +22,7 @@ int getApeachScore() {
   }
   return score;
 }
-//
-// vector<int> getOrderMoreHitSmallScore(vector<int> tmpResult) {
-//   for (int i = 10; i >= 0; i--) {
-//     if (result[i] > tmpResult[i]) {
-//       return result;
-//     } else {
-//       return tmpResult;
-//     }
-//   }
-//   return tmpResult;
-// }
+
 void dfs(int now, int leftArrow, int nowScore) {
   // 끝까지 탐색했다면?
   if (now == 11) {
@@ -61,13 +50,10 @@ void dfs(int now, int leftArrow, int nowScore) {
     int score = 10 - i;
     // 라이언이 과녁을 쏠 수 있을 경우
     if (globalInfo[i] < leftArrow) {
-      int tmp = globalResult[i];
+      // int tmp = globalResult[i];
       globalResult[i] = globalInfo[i] + 1;
       dfs(i + 1, leftArrow - globalInfo[i] - 1, nowScore + score);
-      globalResult[i] = tmp;
-
-      dfs(i + 1, leftArrow - globalInfo[i] - 1, nowScore);
-
+      globalResult[i] = 0;
     }
     // 쏠수 없는경우
     else {
@@ -79,42 +65,26 @@ vector<int> solution(int n, vector<int> info) {
   globalInfo = info;
   globalResult = vector(11, 0);
   result.clear();
-
   maxDifference = 0;
 
-  for (int i = 0; i < 11; i++) {
-    dfs(i, n, 0);
-  }
+  dfs(0, n, 0);
 
-  int size = result.size();
-  cout << "----------------------------------------" << endl;
-  if (size > 0) {
-    for (int i = 0; i < size; i++) {
-      reverse(result[i].begin(), result[i].end());
-      // for (auto a : result[i]) {
-      //   cout << a << " ";
-      // }
-      // cout << endl;
+  sort(result.rbegin(), result.rend(), [](auto a, auto b) {
+    for (int i = 10; i >= 0; i--) {
+      if (a[i] != b[i]) {
+        if (a[i] < b[i])
+          return true;
+        else
+          return false;
+      }
     }
-    stable_sort(result.begin(), result.end(),
-                [](vector<int> a, vector<int> b) -> bool {
-                  for (int i = 10; i >= 0; i++) {
-                    if (a[i] >= b[i])
-                      return true;
-                  }
-                  return false;
-                });
-    reverse(result[0].begin(), result[0].end());
-  }
-
+    return false;
+  });
   return maxDifference == 0 ? vector(1, -1) : result[0];
-  // return vector(1, 0);
 }
 
 int main() {
-  freopen("/Users/songminhyeong/Git/Study/algorithm/c++version/프로그래머스/"
-          "input.txt",
-          "r", stdin);
+  freopen("input.txt", "r", stdin);
 
   for (int i = 0; i < 4; i++) {
     int n;
@@ -134,10 +104,3 @@ int main() {
     cout << endl;
   }
 }
-
-// // 현재 점수차 == 최대 점수차 {
-// //
-// // }
-
-// // 어피치가 10점, 라이언이 20점
-// // 어피치가 0, 라이언 10점
