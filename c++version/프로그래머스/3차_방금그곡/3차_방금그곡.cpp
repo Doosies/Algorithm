@@ -19,10 +19,11 @@ string solution(string m, vector<string> musicinfosInput) {
   unordered_map<string, string> hs = {
       {"C#", "c"}, {"D#", "d"}, {"F#", "f"}, {"G#", "g"}, {"A#", "a"}};
 
+  // 문자열을 자름
   auto split = [](string s, string pattern) {
     regex reg(pattern);
-    sregex_token_iterator it(s.begin(), s.end(), reg, -1), end;
-    return vector<string>(it, end);
+    sregex_token_iterator it(s.begin(), s.end(), reg, -1);
+    return vector<string>(it, {});
   };
 
   // 시간을 얻어옴
@@ -31,6 +32,7 @@ string solution(string m, vector<string> musicinfosInput) {
     return stoi(splited[0]) * 60 + stoi(splited[1]);
   };
 
+  // # 들어간 문자를 치환함
   auto getConvertedNotes = [&hs](string notes) {
     string convertedNotes;
     for (int i = 0; i < notes.length(); i++) {
@@ -46,7 +48,7 @@ string solution(string m, vector<string> musicinfosInput) {
   };
 
   // 시트안에 멜로디가 존재하는지 확인
-  auto isMelodyInSheetMusic = [&](int playTime, string sheetMusic) -> bool {
+  auto isMelodyInSheetMusic = [&](int playTime, string sheetMusic) {
     string fullSheet = sheetMusic;
     regex regexp(m);
     smatch match;
@@ -55,7 +57,6 @@ string solution(string m, vector<string> musicinfosInput) {
       for (int i = 0; i <= ceil(playTime / sheetMusic.size()); i++)
         fullSheet.append(sheetMusic);
 
-    cout << fullSheet << " " << m << endl;
     fullSheet = fullSheet.substr(0, playTime);
     regex_search(fullSheet, match, regexp);
     return m.compare(match.str()) == 0 ? true : false;
@@ -111,7 +112,6 @@ int main() {
     auto [m, musicinfos] = input;
     string answer = solution(m, musicinfos);
     cout << answer << endl;
-    cout << "-------------------" << endl;
   }
 
   return 0;
