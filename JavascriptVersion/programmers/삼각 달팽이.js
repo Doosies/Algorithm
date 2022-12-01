@@ -20,7 +20,7 @@ const solution = n => {
     }
     move--;
   }
-  return answer.reduce((arr, now) => arr.concat(now), []);
+  return answer.flat();
 };
 
 console.log(solution(5));
