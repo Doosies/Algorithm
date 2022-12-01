@@ -1,38 +1,32 @@
 function solution(user_id, banned_id) {
-  const banned_len = banned_id.length;
-  const answer = new Set();
+  const getPermu = (arr, rst) => {
+    if (arr.length === banned_id.length) rst.push(arr);
 
-  const isBlackUser = (uid, bid) => {
-    if (uid.length !== bid.length) return false;
-
-    for (let i = 0; i < uid.length; i++) {
-      if (bid[i] === '*') continue;
-      if (uid[i] !== bid[i]) return false;
-    }
-    return true;
-  };
-
-  const dfs = (now, users) => {
-    if (users.length === banned_len) {
-      answer.add(users.join(','));
-    }
-    for (let i = now; i < user_id.length; i++) {
-      for (let j = 0; j < banned_id.length; j++) {
-        if (isBlackUser(user_id[i], banned_id[j])) {
-          const tmp = banned_id[j];
-          banned_id.splice(j, 1);
-          dfs(i + 1, [...users, user_id[i]]);
-          banned_id.splice(j, 0, tmp);
-        } else {
-          dfs(i + 1, users);
-        }
+    for (let i = 0; i < user_id.length; i++) {
+      if (!arr.includes(user_id[i])) {
+        getPermu([...arr, user_id[i]], rst);
       }
     }
+    return rst;
   };
 
-  dfs(0, []);
+  const permus = getPermu([], []);
+  const result = new Set();
 
-  return answer.size;
+  permus.forEach(permu => {
+    let bannedUserCnt = 0;
+
+    for (let i = 0; i < permu.length; i++) {
+      const replaceBanned = banned_id[i].replaceAll('*', '.');
+      const reg = new RegExp(`^${replaceBanned}$`);
+
+      if (reg.test(permu[i])) bannedUserCnt++;
+    }
+
+    if (bannedUserCnt === banned_id.length) result.add(permu.sort().join(''));
+  });
+
+  return result.size;
 }
 
 console.log(solution(['frodo', 'fradi', 'crodo', 'abc123', 'frodoc'], ['fr*d*', 'abc1**']));
