@@ -36,3 +36,27 @@ function getPermutation(input, end, result = [], tmp = []) {
 
   return result;
 }
+
+const sol = n => {
+  const nArr = Array.from({ length: n }, (_, i) => i + 1);
+  const ans = [];
+
+  const permu = (arr = []) => {
+    if (arr.length === n) {
+      ans.push(arr);
+      return;
+    }
+
+    nArr.forEach(val => {
+      if (!arr.includes(val)) {
+        permu([...arr, val]);
+      }
+    });
+  };
+
+  permu();
+
+  return ans;
+};
+
+console.log(sol(3));
