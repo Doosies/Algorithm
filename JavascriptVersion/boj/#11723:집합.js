@@ -1,8 +1,8 @@
 // 문제링크: https://www.acmicpc.net/problem/11723
 // 시작날짜: 2023.06.29
 // 시작시간: 14:13
-// 종료시간:
-// 소요시간:
+// 종료시간: 14:52
+// 소요시간: 00:39
 
 //const stdin = require('fs').readFileSync(0, 'utf-8').trim().split('\n');
 //prettier-ignore
