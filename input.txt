@@ -1,8 +1,6 @@
-7
-1
 5
-2
-10
--99
-7
-5
+add 1
+add 3
+remove 3
+check 1
+all
