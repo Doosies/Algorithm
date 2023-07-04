@@ -1,0 +1,15 @@
+/Users/songminhyeong/Git/Study/algorithm/c#/bin/Debug/net7.0/c#
+/Users/songminhyeong/Git/Study/algorithm/c#/bin/Debug/net7.0/c#.deps.json
+/Users/songminhyeong/Git/Study/algorithm/c#/bin/Debug/net7.0/c#.runtimeconfig.json
+/Users/songminhyeong/Git/Study/algorithm/c#/bin/Debug/net7.0/c#.dll
+/Users/songminhyeong/Git/Study/algorithm/c#/bin/Debug/net7.0/c#.pdb
+/Users/songminhyeong/Git/Study/algorithm/c#/obj/Debug/net7.0/c#.csproj.AssemblyReference.cache
+/Users/songminhyeong/Git/Study/algorithm/c#/obj/Debug/net7.0/c#.GeneratedMSBuildEditorConfig.editorconfig
+/Users/songminhyeong/Git/Study/algorithm/c#/obj/Debug/net7.0/c#.AssemblyInfoInputs.cache
+/Users/songminhyeong/Git/Study/algorithm/c#/obj/Debug/net7.0/c#.AssemblyInfo.cs
+/Users/songminhyeong/Git/Study/algorithm/c#/obj/Debug/net7.0/c#.csproj.CoreCompileInputs.cache
+/Users/songminhyeong/Git/Study/algorithm/c#/obj/Debug/net7.0/c#.dll
+/Users/songminhyeong/Git/Study/algorithm/c#/obj/Debug/net7.0/refint/c#.dll
+/Users/songminhyeong/Git/Study/algorithm/c#/obj/Debug/net7.0/c#.pdb
+/Users/songminhyeong/Git/Study/algorithm/c#/obj/Debug/net7.0/c#.genruntimeconfig.cache
+/Users/songminhyeong/Git/Study/algorithm/c#/obj/Debug/net7.0/ref/c#.dll
