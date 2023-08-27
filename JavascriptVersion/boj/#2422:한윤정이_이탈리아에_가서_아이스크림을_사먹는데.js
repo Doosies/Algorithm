@@ -7,6 +7,8 @@
 // 성능개선: 16:18 (720ms -> 248ms)
 // 소요시간: 00:12
 
+// 총시이간: 00:41
+
 //const stdin = require('fs').readFileSync(0, 'utf-8').trim().split('\n');
 //prettier-ignore
 const stdin = ` 
