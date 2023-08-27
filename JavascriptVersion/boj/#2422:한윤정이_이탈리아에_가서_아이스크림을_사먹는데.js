@@ -4,6 +4,9 @@
 // 종료시간: 16:06
 // 소요시간: 00:29
 
+// 성능개선: 16:18 (720ms -> 248ms)
+// 소요시간: 00:12
+
 //const stdin = require('fs').readFileSync(0, 'utf-8').trim().split('\n');
 //prettier-ignore
 const stdin = ` 
@@ -16,27 +19,24 @@ const stdin = `
 const input = (() => { let l = 0; return () => stdin[l++].split(' ').map(Number);})();
 
 const [N, M] = input();
-const noCombi = {};
+const noCombi = Array.from({ length: N + 1 }, () => Array.from({ length: N + 1 }, () => false));
+let result = 0;
 
 for (let i = 0; i < M; i++) {
   const [a, b] = input();
-
-  if (noCombi[a]) noCombi[a].push(b);
-  else noCombi[a] = [b];
-
-  if (noCombi[b]) noCombi[b].push(a);
-  else noCombi[b] = [a];
+  noCombi[a][b] = true;
+  noCombi[b][a] = true;
 }
 
-function combi(now = 1, arr = [], result = 0) {
-  if (arr.length === 3) return 1;
+for (let i = 1; i < N + 1; i++) {
+  for (let j = i + 1; j < N + 1; j++) {
+    if (noCombi[i][j]) continue;
 
-  for (let i = now; i < N + 1; i++) {
-    if (arr.some(el => noCombi[i]?.some(no => no === el))) continue;
-    result += combi(i + 1, [...arr, i]);
+    for (let k = j + 1; k < N + 1; k++) {
+      if (noCombi[i][k] || noCombi[j][k]) continue;
+      result++;
+    }
   }
-
-  return result;
 }
 
-console.log(combi());
+console.log(result);
